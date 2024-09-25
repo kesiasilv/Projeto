@@ -53,7 +53,7 @@ public class BibliotecaBanco {
             autorDAO.inserir(autor);
 
             // Listar autores
-            List<Autores> autores = autorDAO.listar();
+            List<Autores> autores = autorDAO.consultar();
             System.out.println("Listando autores:");
             for (Autores a : autores) {
                 System.out.println("Autor: " + a.getNome());
