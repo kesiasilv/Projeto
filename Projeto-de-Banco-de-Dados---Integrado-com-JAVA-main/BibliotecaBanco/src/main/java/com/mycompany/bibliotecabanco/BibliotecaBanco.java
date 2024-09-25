@@ -69,7 +69,7 @@ public class BibliotecaBanco {
             
 
             // Listar livros
-            List<Livros> livros = livroDAO.listar();
+            List<Livros> livros = livroDAO.consultar();
             System.out.println("Listando livros:");
             for (Livros l : livros) {
                 System.out.println("Livro: " + l.getTitulo());
