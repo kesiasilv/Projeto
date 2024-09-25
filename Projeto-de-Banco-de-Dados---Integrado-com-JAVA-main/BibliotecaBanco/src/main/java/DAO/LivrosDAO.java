@@ -28,15 +28,17 @@ public class LivrosDAO {
     public void inserir(Livros livro) throws SQLException {
         String sql = "INSERT INTO livros (titulo, autor_id, categoria_id) VALUES (?, ?, ?)";
         PreparedStatement ps = conexao.prepareStatement(sql);
-
-            ps.setString(1, livro.getTitulo());
-            ps.setInt(2, livro.getAutorId());
-            ps.setInt(3, livro.getCategoriaId());
+            
+            ps.setInt(1, livro.getisbn());
+            ps.setString(2, livro.getTitulo());
+            ps.setInt(3, livro.getANO());
+            ps.setInt(4, livro.getIdEditora());
+            ps.setInt(5, livro.getcdcategoria());
             ps.executeUpdate();
             ps.close();
     }
     
-    //Consulta de dados (READ)
+    //Consulta de dados (READ) 
     public List<Livros> consultar() throws SQLException {
         
         List<Livros> livros = new ArrayList<>();
@@ -46,10 +48,11 @@ public class LivrosDAO {
         
             while (rs.next()) {
                 Livros livro = new Livros();
-                livro.setId(rs.getInt("ISBN"));
+                livro.setisbn(rs.getInt("ISBN"));
                 livro.setTitulo(rs.getString("titulo"));
-                livro.setAutorId(rs.getInt("autor_id"));
-                livro.setCategoriaId(rs.getInt("cod_categoria"));
+                livro.setANO(rs.getInt("ano"));
+                livro.setIdEditora(rs.getInt("id_editora"));
+                livro.setcdcategoria(rs.getInt("cd_categoria"));
                 livro.setDisponibilidade(rs.getBoolean("disponibilidade"));
                 livros.add(livro);
             }
@@ -63,10 +66,14 @@ public class LivrosDAO {
         String sql = "UPDATE livros SET titulo"
                 + " = ? WHERE autor_id = ?";
         PreparedStatement ps = conexao.prepareStatement(sql);
-        
-            ps.setString(1, livro.getTitulo());
-            ps.setInt(2, livro.getAutorId());
-            ps.setInt(3, livro.getCategoriaId());
+            
+            ps.setInt(1, livro.getisbn());
+            ps.setString(2, livro.getTitulo());
+            ps.setInt(3, livro.getANO());
+            ps.setInt(4, livro.getIdEditora());
+            ps.setInt(5, livro.getcdcategoria());
+            ps.setBoolean(6, livro.getDisponibilidade());
+            
             ps.executeUpdate();
             
             ps.close();
