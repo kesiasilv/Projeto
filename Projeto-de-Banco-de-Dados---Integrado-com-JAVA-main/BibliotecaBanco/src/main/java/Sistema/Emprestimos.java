@@ -8,57 +8,59 @@ package Sistema;
  *
  * @author kesia.viana
  */
-import java.util.Date;
 
-public class Emprestimos {
+import java.time.LocalDate; // serao utilizadas 2 datas 
 
+public class Emprestimo {
+    
     private int id;
     private int livroId;
     private int usuarioId;
-    private Date dataEmprestimo;
-    private Date dataDevolucao;
+    private LocalDate dataemprestimo;
+    private LocalDate datadevolucao;
 
-    public Emprestimos() {}
-
-    public int getId() {
+    //construtor necessario
+    public Emprestimo(){
+        
+    }
+    
+    public int getId(){
         return id;
     }
-
+    
     public void setId(int id) {
         this.id = id;
     }
-
-    public int getLivroId() {
+    
+    public int getLivroId(){
         return livroId;
     }
-
-    public void setLivroId(int livroId) {
+    
+    public void setlivroId(int livroId){
         this.livroId = livroId;
     }
-
-    public int getUsuarioId() {
+    
+    public int getusuarioId(){
         return usuarioId;
     }
-
-    public void setUsuarioId(int usuarioId) {
+    
+    public void setUsuario(int usuarioId){
         this.usuarioId = usuarioId;
     }
-
-    public Date getDataEmprestimo() {
-        return dataEmprestimo;
+    
+    public LocalDate getDataEmprestimo(){
+        return dataemprestimo;
     }
-
-    public void setDataEmprestimo(Date dataEmprestimo) {
-        this.dataEmprestimo = dataEmprestimo;
+    
+    public void setDataEmprestimo(LocalDate dataemprestimo){
+        this.dataemprestimo = dataemprestimo;
     }
-
-    public Date getDataDevolucao() {
-        return dataDevolucao;
+    
+    public LocalDate getdatadevolucao(){
+        return datadevolucao;
     }
-
-    public void setDataDevolucao(Date dataDevolucao) {
-        this.dataDevolucao = dataDevolucao;
+    
+    public void setdatadevolucao(LocalDate dataDevolucao){
+         this.datadevolucao = dataDevolucao;
     }
 }
-
-
