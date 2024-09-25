@@ -66,6 +66,7 @@ public class BibliotecaBanco {
             livro.setAutorId(autor.getId()); // Ajuste para pegar o ID do autor inserido
             livro.setCategoriaId(1); // Substitua pelo ID real da categoria existente
             livroDAO.inserir(livro);
+            livroPrincipal = 0;
 
             // Listar livros
             List<Livros> livros = livroDAO.listar();
