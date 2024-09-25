@@ -24,11 +24,11 @@ public class Emprestimo {
         
     }
     
-    public int getId(){
+    public int getcd(){
         return cd;
     }
     
-    public void setId(int id) {
+    public void setcd(int cd) {
         this.cd = cd;
     }
     
