@@ -8,55 +8,82 @@ package DAO;
  *
  * @author kesia.viana
  */
-import Sistema.Livros;
-import com.mycompany.bibliotecabanco.BibliotecaBanco;
-
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import Sistema.Livros;
 
 public class LivrosDAO {
 
+    private final Connection conexao;
+
     public LivrosDAO(Connection conexao) {
+        this.conexao = conexao;
     }
-
-    public void inserir(Livros livro) {
+    
+    //Inserção de dados (Create)
+    public void inserir(Livros livro) throws SQLException {
         String sql = "INSERT INTO livros (titulo, autor_id, categoria_id) VALUES (?, ?, ?)";
-        try (Connection conn = BibliotecaBanco.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, livro.getTitulo());
-            stmt.setInt(2, livro.getAutorId());
-            stmt.setInt(3, livro.getCategoriaId());
-            stmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+        PreparedStatement ps = conexao.prepareStatement(sql);
 
-    public List<Livros> listar() {
+            ps.setString(1, livro.getTitulo());
+            ps.setInt(2, livro.getAutorId());
+            ps.setInt(3, livro.getCategoriaId());
+            ps.executeUpdate();
+            ps.close();
+    }
+    
+    //Consulta de dados (READ)
+    public List<Livros> listar() throws SQLException {
+        
         List<Livros> livros = new ArrayList<>();
         String sql = "SELECT * FROM livros";
-        try (Connection conn = BibliotecaBanco.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql);
-             ResultSet rs = stmt.executeQuery()) {
+        PreparedStatement ps = conexao.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        
             while (rs.next()) {
                 Livros livro = new Livros();
                 livro.setId(rs.getInt("ISBN"));
                 livro.setTitulo(rs.getString("titulo"));
-               // livro.setAutorId(rs.getInt("autor_id"));
+                livro.setAutorId(rs.getInt("autor_id"));
                 livro.setCategoriaId(rs.getInt("cod_categoria"));
                 livro.setDisponibilidade(rs.getBoolean("disponibilidade"));
                 livros.add(livro);
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return livros;
+            rs.close();
+            ps.close();
+            return livros;
+    }  
+    
+    //Atualização de dados (UPDATE) 
+    public void atualizar(Livros livro) throws SQLException{
+        String sql = "UPDATE livros SET titulo"
+                + " = ? WHERE autor_id = ?";
+        PreparedStatement ps = conexao.prepareStatement(sql);
+        
+            ps.setString(1, livro.getTitulo());
+            ps.setInt(2, livro.getAutorId());
+            ps.setInt(3, livro.getCategoriaId());
+            ps.executeUpdate();
+            
+            ps.close();
     }
-
     
+    //Exclusão de dados (Delete)
+    public void excluir(int id) throws SQLException{
+        String sql = "DELETE FROM livros WHERE id = ?";
+        PreparedStatement ps = conexao.prepareStatement(sql);
+        
+        //definir o id que sera excluido
+        ps.setInt(1,id);
+        
+        //excluir
+        ps.executeUpdate();
+        
+        //fechar
+        ps.close();
+    }
 }
-
-
-    
-
