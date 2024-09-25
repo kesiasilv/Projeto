@@ -50,7 +50,7 @@ public class AutoresDAO {
     }
     
     //Consulta de dados (READ)
-    public List<Autores> listar() {
+    public List<Autores> consultar() {
         
         List<Autores> autores = new ArrayList<>();
 
