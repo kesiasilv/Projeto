@@ -6,16 +6,16 @@ package Sistema;
 
 /**
  *
- * @author kesia.viana
+ * @author Amanda
  */
 
 import java.time.LocalDate; // serao utilizadas 2 datas 
 
 public class Emprestimo {
     
-    private int id;
-    private int livroId;
-    private int usuarioId;
+    private int cd;
+    private int ISBN;
+    private String cpf;
     private LocalDate dataemprestimo;
     private LocalDate datadevolucao;
 
@@ -25,27 +25,28 @@ public class Emprestimo {
     }
     
     public int getId(){
-        return id;
+        return cd;
     }
     
     public void setId(int id) {
-        this.id = id;
+        this.cd = cd;
     }
     
-    public int getLivroId(){
-        return livroId;
+    public int getisbn(){
+        return ISBN;
     }
     
-    public void setlivroId(int livroId){
-        this.livroId = livroId;
+    public void setisbn(String ISBN){
+        int isbn = 0;
+        this.ISBN = isbn;
     }
     
-    public int getusuarioId(){
-        return usuarioId;
+    public String getucpf(){
+        return cpf;
     }
     
-    public void setUsuario(int usuarioId){
-        this.usuarioId = usuarioId;
+    public void setcpf(String cpf){
+        this.cpf = cpf;
     }
     
     public LocalDate getDataEmprestimo(){
@@ -64,3 +65,5 @@ public class Emprestimo {
          this.datadevolucao = dataDevolucao;
     }
 }
+
+
