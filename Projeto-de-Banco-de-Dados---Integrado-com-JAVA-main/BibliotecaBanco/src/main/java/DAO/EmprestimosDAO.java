@@ -28,10 +28,11 @@ public class EmprestimosDAO {
     public void inserir(Emprestimo emprestimo) throws SQLException {
         String sql = "INSERT INTO emprestimos (livro_id, usuario_id, data_emprestimo, data_devolucao) VALUES (?, ?, ?, ?)";
         PreparedStatement ps = conexao.prepareStatement(sql);
-        ps.setInt(1, emprestimo.getLivroId());
-        ps.setInt(2, emprestimo.getusuarioId());
-        ps.setDate(3, java.sql.Date.valueOf(emprestimo.getDataEmprestimo()));
-        ps.setDate(4, java.sql.Date.valueOf(emprestimo.getdatadevolucao()));
+        ps.setInt(1, emprestimo.getId());
+        ps.setInt(2, emprestimo.getisbn());
+        ps.setString(3, emprestimo.getucpf());
+        ps.setDate(4, java.sql.Date.valueOf(emprestimo.getDataEmprestimo()));
+        ps.setDate(5, java.sql.Date.valueOf(emprestimo.getdatadevolucao()));
         ps.executeUpdate();
         ps.close();
     }
@@ -46,8 +47,8 @@ public class EmprestimosDAO {
         while(rs.next()){
             Emprestimo emprestimo = new Emprestimo();
             emprestimo.setId(rs.getInt("id"));
-            emprestimo.setlivroId(rs.getInt("livro_id"));
-            emprestimo.setUsuario(rs.getInt("usuario_id"));
+            emprestimo.setisbn(rs.getString("ISBN"));
+            emprestimo.setcpf(rs.getString("cpf"));
             emprestimo.setDataEmprestimo(rs.getDate("data_emprestimo").toLocalDate());
             emprestimo.setdatadevolucao(rs.getDate("data_devolucao").toLocalDate());
             emprestimos.add(emprestimo);
@@ -62,9 +63,9 @@ public class EmprestimosDAO {
     public void atualizar(Emprestimo emprestimo) throws SQLException {
         String sql = "UPDATE emprestimos SET livro_id = ?, usuario-id = ?m  data_emprestimo = ?, data_devololução = ? WHERE id = ?";
         PreparedStatement ps = conexao.prepareStatement(sql);
-        ps.setInt(1, emprestimo.getLivroId());
-        ps.setInt(2, emprestimo.getusuarioId());
-        ps.setInt(3, emprestimo.getId());
+        ps.setInt(1, emprestimo.getId());
+        ps.setInt(2, emprestimo.getisbn());
+        ps.setString(3, emprestimo.getucpf());
         ps.setDate(4, java.sql.Date.valueOf(emprestimo.getDataEmprestimo()));
         ps.setDate(5, java.sql.Date.valueOf(emprestimo.getdatadevolucao()));
         ps.executeUpdate();
