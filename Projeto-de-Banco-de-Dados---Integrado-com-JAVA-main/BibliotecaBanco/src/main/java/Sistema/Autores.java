@@ -43,7 +43,7 @@ public class Autores {
         return sexo;
     }
     
-    public void setDataNascimento(String string){
+    public void setsexo(String string){
         this.sexo = sexo;
     }
 }
