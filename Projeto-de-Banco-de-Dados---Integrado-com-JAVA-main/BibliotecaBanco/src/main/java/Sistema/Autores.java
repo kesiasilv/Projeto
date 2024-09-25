@@ -30,5 +30,21 @@ public class Autores {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+   public String getNascionalidade() {
+        return nascionalidade;
+    }
+    
+    public void setNacionalidade(String nacionalidade){
+        this.nascionalidade = nascionalidade;
+    }
+
+    public String getsexo() {
+        return sexo;
+    }
+    
+    public void setDataNascimento(String string){
+        this.sexo = sexo;
+    }
 }
 
