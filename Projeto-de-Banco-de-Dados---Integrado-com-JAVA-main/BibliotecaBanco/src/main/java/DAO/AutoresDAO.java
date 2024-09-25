@@ -9,61 +9,103 @@ package DAO;
  * @author kesia.viana
  */
 
-import Sistema.Autores;
-import com.mycompany.bibliotecabanco.BibliotecaBanco;
-
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import Sistema.Autores;
 
 public class AutoresDAO {
-
-    public AutoresDAO(Connection conexao) {
+    
+    private Connection conexao;
+    
+    //construtor que recebe a conexao
+    public AutoresDAO(Connection conexao){
+        this.conexao = conexao;
     }
     
-    public void inserir(Autores autor) {
-        String sql = "INSERT INTO autores (nome) VALUES (?)";
-        try (Connection conn = BibliotecaBanco.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, autor.getNome());
-            stmt.executeUpdate();
+    //inserção de dados (CREATE)
+    public boolean inserir(Autores autor) {
+        try {
+             Connection con = DbConnect.getConexao();
+             String sql = "INSERT INTO autores (nome) VALUES (?)";
+             PreparedStatement ps = con.prepareStatement(sql);
+             ps.setString(1, autor.getNome());
+             ps.setString(2, autor.getNascionalidade());
+             ps.setString(3, autor.getDataNascimento());
+             
+             ps.execute();
+             ps.close();
+             con.close();
+             
+             return true;
+             
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
-
+    
+    //Consulta de dados (READ)
     public List<Autores> listar() {
+        
         List<Autores> autores = new ArrayList<>();
-        String sql = "SELECT * FROM autores";
-        try (Connection conn = BibliotecaBanco.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql);
-             ResultSet rs = stmt.executeQuery()) {
+
+        try{
+            Connection con = DbConnect.getConexao();
+            String sql = "SELECT * FROM autores";
+            
+            Statement stmt = (Statement) con.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            
             while (rs.next()) {
                 Autores autor = new Autores();
-                autor.setId(rs.getInt("id_autor"));
-                autor.setNome(rs.getString("nome"));
+                
+                autor.setId(rs.getInt("idAutor"));
+                autor.setNome(rs.getString("nomeAutor"));
+                autor.setNacionalidade(rs.getString("nacionalidade"));
+                autor.setDataNascimento(rs.getString("dataNascimento"));
+                
                 autores.add(autor);
             }
+            rs.close();
+            con.close();
+            
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return autores;
     }
 
-// Métodos de atualização e exclusão podem ser implementados de maneira similar
-    // Atualizar Autor
-    public void atualizar(Autores autor) {
-        String sql = "UPDATE autores SET nome = ? WHERE id_autor = ?";
-        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            stmt.setString(1, autor.getNome());
-            stmt.setInt(2, autor.getId());
-            stmt.executeUpdate();
+    
+    // Atualização de dados (UPDATE)
+    public boolean atualizar(Autores autor) {
+        
+        
+        try {
+            Connection con = DbConnect.getConexao();
+            String sql = "UPDATE autores SET nome = ? WHERE id_autor = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            
+            ps.setString(1, autor.getNome());
+            ps.setInt(2, autor.getId());
+            ps.setString(3, autor.getNascionalidade());
+            ps.setString(4, autor.getDataNascimento());
+            
+            //executa o comando de atualização
+            ps.executeUpdate();
+            
+            
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return false;
     }
 
-    // Excluir Autor
+    // Exclusão de dados (DELETE)
     public void excluir(int id) {
         String sql = "DELETE FROM autores WHERE id_autor = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
