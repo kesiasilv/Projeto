@@ -63,7 +63,7 @@ public class EmprestimosDAO {
         String sql = "UPDATE emprestimos SET livro_id = ?, usuario-id = ?m  data_emprestimo = ?, data_devololução = ? WHERE id = ?";
         PreparedStatement ps = conexao.prepareStatement(sql);
         ps.setInt(1, emprestimo.getLivroId());
-        ps.setInt(2, emprestimo.getUsuarioId());
+        ps.setInt(2, emprestimo.getusuarioId());
         ps.setInt(3, emprestimo.getId());
         ps.setDate(4, java.sql.Date.valueOf(emprestimo.getDataEmprestimo()));
         ps.setDate(5, java.sql.Date.valueOf(emprestimo.getdatadevolucao()));
