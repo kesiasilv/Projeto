@@ -37,7 +37,7 @@ public class LivrosDAO {
     }
     
     //Consulta de dados (READ)
-    public List<Livros> listar() throws SQLException {
+    public List<Livros> consultar() throws SQLException {
         
         List<Livros> livros = new ArrayList<>();
         String sql = "SELECT * FROM livros";
