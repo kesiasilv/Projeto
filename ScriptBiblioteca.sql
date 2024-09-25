@@ -1,43 +1,71 @@
-create database Biblioteca;
+create database Biblioteca_Uni;
 
 GRANT ALL PRIVILEGES ON biblioteca.* TO 'root'@'localhost';
 FLUSH PRIVILEGES; /*permissoes*/
 
-USE biblioteca;
+Use Biblioteca_Uni;
 
-CREATE TABLE autores (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(100) NOT NULL
+-- criando a tabela Usuario --
+create table usuario(
+CPF varchar(13) primary key not null,
+nome varchar(40),
+email varchar(30),
+data_nascimento date not null,
+endereco varchar(60)
 );
 
-CREATE TABLE categorias (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    descricao VARCHAR(100) NOT NULL
+-- criando a tabela Autor --
+create table autor(
+id_autor int primary key not null auto_increment,
+nome varchar(20),
+nacionalidade varchar(20),
+sexo varchar(1)
 );
 
-CREATE TABLE livros (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    titulo VARCHAR(255) NOT NULL,
-    autor_id INT,
-    categoria_id INT,
-    FOREIGN KEY (autor_id) REFERENCES autores(id),
-    FOREIGN KEY (categoria_id) REFERENCES categorias(id)
+-- criando a tabela Editora --
+create table editora(
+id_editora int primary key not null auto_increment,
+nome_editora varchar(40) not null unique,
+endereco varchar(60),
+contato varchar(10)
 );
 
-CREATE TABLE usuarios (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(100) NOT NULL,
-    email VARCHAR(100) NOT NULL UNIQUE
+-- criando a tabela Categoria --
+create table categoria(
+cod_categoria int primary key not null,
+nome_categoria varchar(40) not null unique,
+descricao text
 );
 
-CREATE TABLE emprestimos (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    livro_id INT,
-    usuario_id INT,
-    data_emprestimo DATE,
-    data_devolucao DATE,
-    FOREIGN KEY (livro_id) REFERENCES livros(id),
-    FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
+-- criando a tabela Livro --
+create table livro(
+ISBN int primary key not null,
+titulo varchar(40),
+ano varchar(4),
+cod_categoria int,
+id_editora int,
+foreign key (cod_categoria) references categoria(cod_categoria),
+foreign key (id_editora) references editora(id_editora)
 );
-select * from autores;
 
+-- criando a tabela Emprestimo --
+create table emprestimo(
+cod_emprestimo integer primary key not null,
+data_emprestimo date not null,
+data_devolucao date not null,
+ISBN int,
+CPF varchar(13),
+foreign key (ISBN) references livro(ISBN),
+foreign key (CPF) references usuario(CPF)
+);
+
+-- criando a tabela associativa Livro_Autor --
+create table livro_autor(
+ISBN int,
+id_autor int,
+foreign key (ISBN) references livro(ISBN),
+foreign key (id_autor) references autor(id_autor)
+);
+
+-- preenchendo as tabelas --
+insert into usuario(cpf, nome, email, data_nascimento, endereco) values (12342343698, 'ana', 'anamaria@gmail.com', '1998-09-12', 'rua flor');
