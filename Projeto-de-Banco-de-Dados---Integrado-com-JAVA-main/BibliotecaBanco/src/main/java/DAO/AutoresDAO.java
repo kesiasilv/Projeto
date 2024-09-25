@@ -35,7 +35,7 @@ public class AutoresDAO {
              PreparedStatement ps = con.prepareStatement(sql);
              ps.setString(1, autor.getNome());
              ps.setString(2, autor.getNascionalidade());
-             ps.setString(3, autor.getDataNascimento());
+             ps.setString(3, autor.getsexo());
              
              ps.execute();
              ps.close();
@@ -67,7 +67,7 @@ public class AutoresDAO {
                 autor.setId(rs.getInt("idAutor"));
                 autor.setNome(rs.getString("nomeAutor"));
                 autor.setNacionalidade(rs.getString("nacionalidade"));
-                autor.setDataNascimento(rs.getString("dataNascimento"));
+                autor.setDataNascimento(rs.getString("sexo"));
                 
                 autores.add(autor);
             }
@@ -93,7 +93,7 @@ public class AutoresDAO {
             ps.setString(1, autor.getNome());
             ps.setInt(2, autor.getId());
             ps.setString(3, autor.getNascionalidade());
-            ps.setString(4, autor.getDataNascimento());
+            ps.setString(4, autor.getsexo());
             
             //executa o comando de atualização
             ps.executeUpdate();
