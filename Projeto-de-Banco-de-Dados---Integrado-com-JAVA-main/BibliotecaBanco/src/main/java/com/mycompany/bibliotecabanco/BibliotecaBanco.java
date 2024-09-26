@@ -50,20 +50,23 @@ public class BibliotecaBanco {
             AutoresDAO autorDAO = new AutoresDAO(conexao); // Passando a conexão
             Autores autor = new Autores();
             autor.setNome("J.R.R. Tolkien");
+            autor.setNacionalidade("Britânico"); // Adicionando a nacionalidade
+            autor.setSexo("M"); // Adicionando o sexo
             autorDAO.inserir(autor);
 
             // Listar autores
-            List<Autores> autores = autorDAO.consultar();
+             List<Autores> autores = autorDAO.consultar();
             System.out.println("Listando autores:");
             for (Autores a : autores) {
-                System.out.println("Autor: " + a.getNome());
+              System.out.println("Autor: " + a.getNome() + ", Nacionalidade: " + a.getNacionalidade() + ", Sexo: " + a.getSexo());
             }
-
-            // Operações com livros
+          
+           
+           // Operações com livros
             LivrosDAO livroDAO = new LivrosDAO(conexao); // Passando a conexão
             Livros livro = new Livros();
             livro.setTitulo("O Senhor dos Anéis");
-            livro.setisbn(autor.getId()); // Ajuste para pegar o ID do autor inserido
+            livro.setisbn(autor.getId_autor()); // Ajuste para pegar o ID do autor inserido
             livro.setcdcategoria(1); // Substitua pelo ID real da categoria existente
             livroDAO.inserir(livro);
             
