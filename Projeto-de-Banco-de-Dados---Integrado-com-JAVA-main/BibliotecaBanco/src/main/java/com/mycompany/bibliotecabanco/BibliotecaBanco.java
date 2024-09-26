@@ -63,8 +63,8 @@ public class BibliotecaBanco {
             LivrosDAO livroDAO = new LivrosDAO(conexao); // Passando a conexão
             Livros livro = new Livros();
             livro.setTitulo("O Senhor dos Anéis");
-            livro.setAutorId(autor.getId()); // Ajuste para pegar o ID do autor inserido
-            livro.setCategoriaId(1); // Substitua pelo ID real da categoria existente
+            livro.setisbn(autor.getId()); // Ajuste para pegar o ID do autor inserido
+            livro.setcdcategoria(1); // Substitua pelo ID real da categoria existente
             livroDAO.inserir(livro);
             
 
