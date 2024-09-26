@@ -10,17 +10,20 @@ package Sistema;
  */
 public class Autores {
    
-    private int id;
+    private int id_autor;
     private String nome;
+    private String nacionalidade;
+    private String sexo;
+    
 
     public Autores() {}
 
-    public int getId() {
-        return id;
+    public int getId_autor() {
+        return id_autor;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId_autor(int id_autor) {
+        this.id_autor = id_autor;
     }
 
     public String getNome() {
@@ -31,19 +34,19 @@ public class Autores {
         this.nome = nome;
     }
 
-   public String getNascionalidade() {
-        return nascionalidade;
+   public String getNacionalidade() {
+        return nacionalidade;
     }
     
     public void setNacionalidade(String nacionalidade){
-        this.nascionalidade = nascionalidade;
+        this.nacionalidade = nacionalidade;
     }
 
-    public String getsexo() {
+    public String getSexo() {
         return sexo;
     }
     
-    public void setsexo(String string){
+    public void setSexo(String sexo){
         this.sexo = sexo;
     }
 }
