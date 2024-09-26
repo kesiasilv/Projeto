@@ -4,6 +4,7 @@
  */
 package DAO;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 
 /**
@@ -15,5 +16,11 @@ class connection {
     static PreparedStatement prepareStatement(String sql) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
+    static Connection getConexao() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     
+   
 }
