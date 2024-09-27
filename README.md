@@ -115,7 +115,7 @@ Adicione o driver JDBC MySQL ao seu projeto. Se você estiver usando Maven, adic
 
 ### Conexão com o Banco de Dados
 
-O código Java para estabelecer a conexão com o banco de dados seria semelhante a este:
+O código Java abaixo estabelece uma conexão com o banco de dados MySQL. Além de lidar com a possibilidade de erro na tentativa de conexão, o programa também exibe uma mensagem informando se a conexão foi ou não bem-sucedida. Caso ocorra um erro durante a conexão, uma exceção será lançada com detalhes específicos. Além disso, há uma verificação e tratamento de possíveis erros ao fechar a conexão, exibindo mensagens adequadas em ambos os casos.
 
 ```java
 import java.sql.Connection;
