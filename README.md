@@ -104,11 +104,13 @@ A integração com o banco de dados MySQL é feita utilizando a API JDBC. A segu
 Adicione o driver JDBC MySQL ao seu projeto. Se você estiver usando Maven, adicione a seguinte dependência no seu `pom.xml`:
 
 ```xml
-<dependency>
-    <groupId>mysql</groupId>
-    <artifactId>mysql-connector-java</artifactId>
-    <version>8.0.31</version>
-</dependency>
+<dependencies>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.33</version>
+        </dependency>
+    </dependencies>
 ```
 
 ### Conexão com o Banco de Dados
