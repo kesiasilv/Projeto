@@ -1,6 +1,6 @@
 # Biblioteca Universitária com Integração Java JDBC e MySQL
 
-Este projeto consiste em um sistema de gerenciamento de uma biblioteca universitária utilizando **Java** e **MySQL**, integrados através da API JDBC (Java Database Connectivity). O sistema permite gerenciar usuários, autores, editoras, categorias de livros, livros e empréstimos, utilizando as operações CRUD (Create, Read, Update e Delete) para manipulação dos dados.
+O objetivo deste trabalho é desenvolver um sistema completo que integre a linguagem de programação Java com o banco de dados MySQL. O projeto deverá contemplar a construção dos modelos conceitual, lógico e físico do banco de dados, bem como a implementação de uma aplicação Java que interaja diretamente com o banco para realizar operações de inserção, consulta, atualização e exclusão de dados (CRUD).
 
 ## Estrutura do Banco de Dados
 
