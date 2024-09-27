@@ -122,13 +122,37 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class ConexaoBancoDados {
-    private static final String URL = "jdbc:mysql://localhost:3306/Biblioteca";
-    private static final String USUARIO = "root";
-    private static final String SENHA = "sua_senha";
+public class BibliotecaBanco {
 
-    public static Connection conectar() throws SQLException {
-        return DriverManager.getConnection(URL, USUARIO, SENHA);
+    private static final String URL = "jdbc:mysql://localhost:3306/biblioteca"; // URL correta do banco de dados
+    private static final String USUARIO = "root"; // Nome de usuário do MySQL
+    private static final String SENHA = "c@tolic@"; // Senha do MySQL
+
+    public static void main(String[] args) {
+        Connection conexao = null;
+
+        // Estabelecendo a conexão
+        conexao = getConnection();
+        System.out.println("Conexão estabelecida com sucesso!");
+
+............................
+
+// Fechando a conexão
+        if (conexao != null) {
+            try {
+                conexao.close();
+            } catch (SQLException ex) {
+                System.out.println("Erro ao fechar a conexão: " + ex.getMessage());
+            }
+        }
+    }
+
+    public static Connection getConnection() {
+        try {
+            return DriverManager.getConnection(URL, USUARIO, SENHA);
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro ao estabelecer conexão com o banco de dados", e);
+        }
     }
 }
 ```
