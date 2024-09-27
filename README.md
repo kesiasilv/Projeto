@@ -491,6 +491,49 @@ public void excluir(String cpf) {
     }
 ```
 
+/*
+ * A classe `BibliotecaBanco` é responsável por estabelecer a conexão com o banco de dados de uma biblioteca
+ * e executar as operações CRUD (Criar, Ler, Atualizar, Excluir) para as diferentes entidades do sistema, 
+ * como `Usuarios`, `Autores`, `Editoras`, `Categorias`, `Livros`, e `Emprestimos`.
+ *
+ * A main() é o ponto de entrada da aplicação e, dentro dela, as seguintes ações ocorrem:
+ *
+ * 1. **Estabelecimento da conexão com o banco de dados**: 
+ *    Através do método `getConnection()`, uma conexão com o banco MySQL é estabelecida usando a URL, 
+ *    o nome de usuário e a senha definidos. Caso a conexão seja bem-sucedida, ela é usada em todas 
+ *    as operações subsequentes com o banco de dados.
+ *
+ * 2. **Operações CRUD com Usuários**:
+ *    - Inserção de um novo usuário no banco.
+ *    - Consulta e listagem de todos os usuários cadastrados no banco.
+ *
+ * 3. **Operações CRUD com Autores**:
+ *    - Inserção de um novo autor no banco.
+ *    - Consulta e listagem de todos os autores cadastrados.
+ *
+ * 4. **Operações CRUD com Editoras**:
+ *    - Inserção de uma nova editora.
+ *    - Consulta e listagem de editoras no sistema.
+ *
+ * 5. **Operações CRUD com Categorias**:
+ *    - Inserção de uma nova categoria.
+ *    - Consulta e listagem de categorias disponíveis.
+ *
+ * 6. **Operações CRUD com Livros**:
+ *    - Inserção de um novo livro.
+ *    - Consulta e listagem de todos os livros cadastrados.
+ *
+ * 7. **Operações CRUD com Empréstimos**:
+ *    - Registro de um novo empréstimo.
+ *    - Consulta e listagem de todos os empréstimos realizados.
+ *
+ * 8. **Encerramento da conexão**:
+ *    Após todas as operações, a conexão com o banco de dados é fechada.
+ *
+ * O programa usa Data Access Objects (DAOs) para abstrair a lógica de acesso ao banco de dados para cada entidade.
+ */
+
+
 ## Conclusão
 
 Este projeto de Biblioteca Universitária demonstra a integração entre Java e MySQL, utilizando a API JDBC para realizar operações CRUD em um banco de dados relacional. Ao longo do desenvolvimento, foram aplicados conceitos fundamentais de modelagem de banco de dados, com a criação dos modelos conceitual, lógico e físico, além da implementação de uma aplicação Java capaz de manipular os dados das tabelas de maneira eficiente e segura.
