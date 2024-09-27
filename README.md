@@ -164,84 +164,83 @@ O sistema implementa operações CRUD para cada tabela. A seguir está um exempl
 #### Create (Inserir Usuário)
 
 ```java
-public void inserirUsuario(String cpf, String nome, String email, String dataNascimento, String endereco) {
-    String sql = "INSERT INTO usuarios (CPF, nome, email, data_nascimento, endereco) VALUES (?, ?, ?, ?, ?)";
-    
-    try (Connection conn = ConexaoBancoDados.conectar();
-         PreparedStatement pstmt = conn.prepareStatement(sql)) {
-         
-        pstmt.setString(1, cpf);
-        pstmt.setString(2, nome);
-        pstmt.setString(3, email);
-        pstmt.setDate(4, java.sql.Date.valueOf(dataNascimento));
-        pstmt.setString(5, endereco);
-        pstmt.executeUpdate();
-    } catch (SQLException e) {
-        e.printStackTrace();
+// Inserção de dados (CREATE)
+    public boolean inserir(Autores autor) {
+        String sql = "INSERT INTO autores (nome, nacionalidade, sexo) VALUES (?, ?, ?)";
+        try (PreparedStatement ps = conexao.prepareStatement(sql)) {
+            ps.setString(1, autor.getNome());
+            ps.setString(2, autor.getNacionalidade());
+            ps.setString(3, autor.getSexo());
+            ps.execute();
+            
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
-}
+
 ```
 
 #### Read (Ler Usuário)
 
 ```java
-public Usuario buscarUsuario(String cpf) {
-    String sql = "SELECT * FROM usuarios WHERE CPF = ?";
-    Usuario usuario = null;
-    
-    try (Connection conn = ConexaoBancoDados.conectar();
-         PreparedStatement pstmt = conn.prepareStatement(sql)) {
-         
-        pstmt.setString(1, cpf);
-        ResultSet rs = pstmt.executeQuery();
-        
-        if (rs.next()) {
-            usuario = new Usuario(rs.getString("CPF"), rs.getString("nome"), rs.getString("email"), 
-                                  rs.getDate("data_nascimento"), rs.getString("endereco"));
+// Consulta de dados (READ)
+    public List<Autores> consultar() {
+        List<Autores> autores = new ArrayList<>();
+        String sql = "SELECT * FROM autores";
+
+        try (Statement stmt = conexao.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+                Autores autor = new Autores();
+                autor.setId_autor(rs.getInt("id_autor"));
+                autor.setNome(rs.getString("nome"));
+                autor.setNacionalidade(rs.getString("nacionalidade"));
+                autor.setSexo(rs.getString("sexo"));
+                autores.add(autor);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-    } catch (SQLException e) {
-        e.printStackTrace();
+        return autores;
     }
-    
-    return usuario;
-}
+
 ```
 
 #### Update (Atualizar Usuário)
 
 ```java
-public void atualizarUsuario(String cpf, String nome, String email, String endereco) {
-    String sql = "UPDATE usuarios SET nome = ?, email = ?, endereco = ? WHERE CPF = ?";
-    
-    try (Connection conn = ConexaoBancoDados.conectar();
-         PreparedStatement pstmt = conn.prepareStatement(sql)) {
-         
-        pstmt.setString(1, nome);
-        pstmt.setString(2, email);
-        pstmt.setString(3, endereco);
-        pstmt.setString(4, cpf);
-        pstmt.executeUpdate();
-    } catch (SQLException e) {
-        e.printStackTrace();
+ // Atualização de dados (UPDATE)
+    public boolean atualizar(Autores autor) {
+        String sql = "UPDATE autores SET nome = ?, nacionalidade = ?, sexo = ? WHERE id_autor = ?";
+        try (PreparedStatement ps = conexao.prepareStatement(sql)) {
+            ps.setString(1, autor.getNome());
+            ps.setString(2, autor.getNacionalidade());
+            ps.setString(3, autor.getSexo());
+            ps.setInt(4, autor.getId_autor());
+            ps.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
-}
+
 ```
 
 #### Delete (Deletar Usuário)
 
 ```java
-public void deletarUsuario(String cpf) {
-    String sql = "DELETE FROM usuarios WHERE CPF = ?";
-    
-    try (Connection conn = ConexaoBancoDados.conectar();
-         PreparedStatement pstmt = conn.prepareStatement(sql)) {
-         
-        pstmt.setString(1, cpf);
-        pstmt.executeUpdate();
-    } catch (SQLException e) {
-        e.printStackTrace();
+// Exclusão de dados (DELETE)
+    public void excluir(int id) {
+        String sql = "DELETE FROM autores WHERE id_autor = ?";
+        try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
-}
 ```
 
 ## Conclusão
