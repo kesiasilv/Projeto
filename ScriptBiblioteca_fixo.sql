@@ -59,13 +59,3 @@ foreign key (ISBN) references livros(ISBN),
 foreign key (CPF) references usuarios(CPF)
 );
 
--- criando a tabela associativa Livro_Autor --
-create table livro_autor(
-ISBN int,
-id_autor int,
-foreign key (ISBN) references livros(ISBN),
-foreign key (id_autor) references autores(id_autor)
-);
-
--- preenchendo as tabelas --
--- insert into usuarios(cpf, nome, email, data_nascimento, endereco) values (12342343698, 'ana', 'anamaria@gmail.com', '1998-09-12', 'rua flor');
