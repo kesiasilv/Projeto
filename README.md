@@ -242,6 +242,254 @@ O sistema implementa operações CRUD para cada tabela (create, read, update e d
         }
     }
 ```
+#### Create (Inserir Categoria)
+
+```java
+public boolean inserir(Categorias categoria) {
+        String sql = "INSERT INTO categorias (cod_categoria, nome_categoria, descricao) VALUES (?, ?, ?)";
+        try (PreparedStatement ps = conexao.prepareStatement(sql)) {
+            ps.setInt(1, categoria.getCod_categoria());
+            ps.setString(2, categoria.getNome_categoria());
+            ps.setString(3, categoria.getDescricao());
+            ps.execute();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+```
+
+#### Read (Ler Categoria)
+
+```java
+public List<Categorias> consultar() {
+        List<Categorias> categorias = new ArrayList<>();
+        String sql = "SELECT * FROM categorias";
+
+        try (Statement stmt = conexao.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+                Categorias categoria = new Categorias();
+                categoria.setCod_categoria(rs.getInt("cod_categoria"));
+                categoria.setNome_categoria(rs.getString("nome_categoria"));
+                categoria.setDescricao(rs.getString("descricao"));
+                categorias.add(categoria);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return categorias;
+    }
+```
+
+#### Create (Inserir Editora)
+
+```java
+public boolean inserir(Editora editora) {
+        String sql = "INSERT INTO editora (nome_editora, endereco, contato) VALUES (?, ?, ?)";
+        try (PreparedStatement ps = conexao.prepareStatement(sql)) {
+            ps.setString(1, editora.getNome_editora());
+            ps.setString(2, editora.getEndereco());
+            ps.setString(3, editora.getContato());
+            ps.execute();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+```
+
+#### Read (Ler Editora)
+
+```java
+ public List<Editora> consultar() {
+        List<Editora> editoras = new ArrayList<>();
+        String sql = "SELECT * FROM editora";
+
+        try (Statement stmt = conexao.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+                Editora editora = new Editora();
+                editora.setId_editora(rs.getInt("id_editora"));
+                editora.setNome_editora(rs.getString("nome_editora"));
+                editora.setEndereco(rs.getString("endereco"));
+                editora.setContato(rs.getString("contato"));
+                editoras.add(editora);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return editoras;
+    }
+```
+
+#### Create (Inserir Emprestimos)
+
+```java
+public boolean inserir(Emprestimos emprestimo) {
+        String sql = "INSERT INTO emprestimos (cod_emprestimo, data_emprestimo, data_devolucao, ISBN, CPF) VALUES (?, ?, ?, ?, ?)";
+        try (PreparedStatement ps = conexao.prepareStatement(sql)) {
+            ps.setInt(1, emprestimo.getCod_emprestimo());
+            ps.setDate(2, emprestimo.getData_emprestimo());
+            ps.setDate(3, emprestimo.getData_devolucao());
+            ps.setInt(4, emprestimo.getISBN());
+            ps.setString(5, emprestimo.getCPF());
+            ps.execute();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+```
+
+#### Read (Ler Emprestimos)
+```java
+public List<Emprestimos> consultar() {
+        List<Emprestimos> emprestimos = new ArrayList<>();
+        String sql = "SELECT * FROM emprestimos";
+
+        try (Statement stmt = conexao.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+                Emprestimos emprestimo = new Emprestimos();
+                emprestimo.setCod_emprestimo(rs.getInt("cod_emprestimo"));
+                emprestimo.setData_emprestimo(rs.getDate("data_emprestimo"));
+                emprestimo.setData_devolucao(rs.getDate("data_devolucao"));
+                emprestimo.setISBN(rs.getInt("ISBN"));
+                emprestimo.setCPF(rs.getString("CPF"));
+                emprestimos.add(emprestimo);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return emprestimos;
+    }
+
+```
+
+#### Create (Inserir Livros)
+
+```java
+public boolean inserir(Livros livro) {
+        String sql = "INSERT INTO livros (ISBN, titulo, ano, cod_categoria, id_editora) VALUES (?, ?, ?, ?, ?)";
+        try (PreparedStatement ps = conexao.prepareStatement(sql)) {
+            ps.setInt(1, livro.getISBN());
+            ps.setString(2, livro.getTitulo());
+            ps.setString(3, livro.getAno());
+            ps.setInt(4, livro.getCod_categoria());
+            ps.setInt(5, livro.getId_editora());
+            ps.execute();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+```
+
+#### Read (Ler Livros)
+
+```java
+public List<Livros> consultar() {
+        List<Livros> livros = new ArrayList<>();
+        String sql = "SELECT * FROM livros";
+
+        try (Statement stmt = conexao.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+                Livros livro = new Livros();
+                livro.setISBN(rs.getInt("ISBN"));
+                livro.setTitulo(rs.getString("titulo"));
+                livro.setAno(rs.getString("ano"));
+                livro.setCod_categoria(rs.getInt("cod_categoria"));
+                livro.setId_editora(rs.getInt("id_editora"));
+                livros.add(livro);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return livros;
+    }
+```
+
+#### Create (Inserir Usuarios)
+
+```java
+public boolean inserir(Usuarios usuario) {
+        String sql = "INSERT INTO usuarios (CPF, nome, email, data_nascimento, endereco) VALUES (?, ?, ?, ?, ?)";
+        try (PreparedStatement ps = conexao.prepareStatement(sql)) {
+            ps.setString(1, usuario.getCpf());
+            ps.setString(2, usuario.getNome());
+            ps.setString(3, usuario.getEmail());
+            ps.setDate(4, usuario.getData_nascimento()); 
+            ps.setString(5, usuario.getEndereco());
+            ps.execute();
+
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+```
+
+#### Read (Ler Usuarios)
+
+```java
+public List<Usuarios> consultar() {
+        List<Usuarios> usuarios = new ArrayList<>();
+        String sql = "SELECT * FROM usuarios";
+
+        try (Statement stmt = conexao.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+                Usuarios usuario = new Usuarios();
+                usuario.setCpf(rs.getString("CPF"));
+                usuario.setNome(rs.getString("nome"));
+                usuario.setEmail(rs.getString("email"));
+                usuario.setData_nascimento(rs.getDate("data_nascimento")); 
+                usuario.setEndereco(rs.getString("endereco"));
+                usuarios.add(usuario);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return usuarios;
+    }
+```
+
+#### Update (Atualizar Usuarios)
+
+```java
+public boolean atualizar(Usuarios usuario) {
+        String sql = "UPDATE usuarios SET nome = ?, email = ?, data_nascimento = ?, endereco = ? WHERE CPF = ?";
+        try (PreparedStatement ps = conexao.prepareStatement(sql)) {
+            ps.setString(1, usuario.getNome());
+            ps.setString(2, usuario.getEmail());
+            ps.setDate(3, usuario.getData_nascimento());
+            ps.setString(4, usuario.getEndereco());
+            ps.setString(5, usuario.getCpf()); 
+            ps.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+```
+
+#### Delete (Deletar Usuarios)
+
+```java
+public void excluir(String cpf) { 
+        String sql = "DELETE FROM usuarios WHERE CPF = ?";
+        try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
+            stmt.setString(1, cpf);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+```
 
 ## Conclusão
 
