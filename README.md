@@ -245,4 +245,8 @@ O sistema implementa operações CRUD para cada tabela. A seguir está um exempl
 
 ## Conclusão
 
-Este projeto implementa um sistema de biblioteca universitária completo, utilizando JDBC para a integração entre Java e MySQL. Ele permite realizar as operações CRUD em todas as tabelas, garantindo o gerenciamento de usuários, autores, editoras, categorias, livros e empréstimos de forma eficiente e escalável.
+Este projeto de Biblioteca Universitária demonstra a integração entre Java e MySQL, utilizando a API JDBC para realizar operações CRUD em um banco de dados relacional. Ao longo do desenvolvimento, foram aplicados conceitos fundamentais de modelagem de banco de dados, com a criação dos modelos conceitual, lógico e físico, além da implementação de uma aplicação Java capaz de manipular os dados das tabelas de maneira eficiente e segura.
+
+A solução atende aos requisitos propostos, permitindo a inserção, consulta, atualização e exclusão de dados de usuários, autores, editoras, categorias, livros e empréstimos, garantindo integridade referencial e consistência no banco de dados. A utilização de boas práticas de programação em Java, junto com o uso de prepared statements para evitar injeção de SQL e a correta gestão de conexões, torna o sistema robusto e confiável.
+
+O projeto também oferece uma base sólida para futuras expansões, como a adição de funcionalidades mais avançadas, relatórios, e melhorias no gerenciamento da biblioteca.
