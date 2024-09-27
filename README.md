@@ -25,7 +25,7 @@ CREATE TABLE autores (
     id_autor INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     nome VARCHAR(20),
     nacionalidade VARCHAR(20),
-    sexo VARCHAR(1)
+    sexo ENUM ('M', 'F')
 );
 ```
 
