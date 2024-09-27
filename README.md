@@ -159,7 +159,7 @@ public class BibliotecaBanco {
 
 ### Operações CRUD
 
-O sistema implementa operações CRUD para cada tabela (create, read, update e delete) . A seguir esta como foi implementado para a tabela `usuarios`.
+O sistema implementa operações CRUD para cada tabela (create, read, update e delete) . A seguir esta como foi implementado em todas as tabelas `usuarios`.
 
 #### Create (Inserir Usuário)
 
