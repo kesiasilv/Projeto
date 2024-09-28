@@ -3,11 +3,24 @@
 O objetivo deste trabalho foi desenvolver um sistema completo que integre a linguagem de programação Java com o banco de dados MySQL. O projeto comtempla a construção dos modelos conceitual, lógico e físico do banco de dados, bem como a implementação de uma aplicação Java que interaja diretamente com o banco para realizar operações de inserção e consulta de dados (CRUD).
 
 ## Integrantes
-- [Agatha Karenne](https://github.com/AgathaKarenne32) 
-- [Késia Silva](https://github.com/kesiasilv)
-- [Clarice Christine](https://github.com/clarisv)
-- [João Pedro Neto](https://github.com/WiseGhostan)
-
+<div style="display: flex; gap: 20px;">
+  <a href="https://github.com/kesiasilv" style="text-align: center;">
+    <img src="https://github.com/kesiasilv.png" alt="Integrante 1" width="50" style="border-radius: 50%;">
+  </a>
+  <a href="https://github.com/AgathaKarenne32" style="text-align: center;">
+    <img src="https://github.com/AgathaKarenne32.png" alt="Integrante 2" width="50" style="border-radius: 50%;">
+  </a>
+  <a href="https://github.com/clarisv" style="text-align: center;">
+    <img src="https://github.com/clarisv.png" alt="Integrante 3" width="50" style="border-radius: 50%;">
+  </a>
+   <a href="https://github.com/WiseGhostan" style="text-align: center;">
+    <img src="https://github.com/WiseGhostan.png" alt="Integrante 3" width="50" style="border-radius: 50%;">
+  </a>
+    </a>
+   <a href="https://github.com/raquel-muniz" style="text-align: center;">
+    <img src="https://github.com/raquel-muniz.png" alt="Integrante 3" width="50" style="border-radius: 50%;">
+  </a>
+</div>
 
 ## Modelagem de Banco de Dados
 ### [Modelo Conceitual](https://github.com/kesiasilv/Projeto/blob/main/Conceptual%20model%20-%20BRMW.pdf)
