@@ -3,7 +3,7 @@
 O objetivo deste trabalho foi desenvolver um sistema completo que integre a linguagem de programação Java com o banco de dados MySQL. O projeto comtempla a construção dos modelos conceitual, lógico e físico do banco de dados, bem como a implementação de uma aplicação Java que interaja diretamente com o banco para realizar operações de inserção e consulta de dados (CRUD).
 
 ## Integrantes
-- [Aghata Karenne](https://github.com/AgathaKarenne32) 
+- [Agatha Karenne](https://github.com/AgathaKarenne32) 
 - [Késia Silva](https://github.com/kesiasilv)
 - [Clarice Christine](https://github.com/clarisv)
 - [João Pedro Neto](https://github.com/WiseGhostan)
