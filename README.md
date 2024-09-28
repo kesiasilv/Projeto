@@ -7,7 +7,6 @@ O objetivo deste trabalho foi desenvolver um sistema completo que integre a ling
 - [Késia Silva](https://github.com/kesiasilv)
 - [Clarice Christine](https://github.com/clarisv)
 - [João Pedro Neto](https://github.com/WiseGhostan)
-- [Raquel Clemente](https://github.com/raquel-muniz)
 
 
 ## Modelagem de Banco de Dados
