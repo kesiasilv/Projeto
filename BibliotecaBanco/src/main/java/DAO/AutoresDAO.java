@@ -61,31 +61,4 @@ public class AutoresDAO {
         }
         return autores;
     }
-
-    // Atualização de dados (UPDATE)
-    public boolean atualizar(Autores autor) {
-        String sql = "UPDATE autores SET nome = ?, nacionalidade = ?, sexo = ? WHERE id_autor = ?";
-        try (PreparedStatement ps = conexao.prepareStatement(sql)) {
-            ps.setString(1, autor.getNome());
-            ps.setString(2, autor.getNacionalidade());
-            ps.setString(3, autor.getSexo());
-            ps.setInt(4, autor.getId_autor());
-            ps.executeUpdate();
-            return true;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-    // Exclusão de dados (DELETE)
-    public void excluir(int id) {
-        String sql = "DELETE FROM autores WHERE id_autor = ?";
-        try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
-            stmt.setInt(1, id);
-            stmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
 }
