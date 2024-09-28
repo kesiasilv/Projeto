@@ -2,6 +2,19 @@
 
 O objetivo deste trabalho foi desenvolver um sistema completo que integre a linguagem de programação Java com o banco de dados MySQL. O projeto comtempla a construção dos modelos conceitual, lógico e físico do banco de dados, bem como a implementação de uma aplicação Java que interaja diretamente com o banco para realizar operações de inserção e consulta de dados (CRUD).
 
+## Integrantes
+- [Aghata Karenne](https://github.com/AgathaKarenne32) 
+- [Késia Silva](https://github.com/kesiasilv)
+- [Clarice Christine](https://github.com/clarisv)
+- [João Pedro Neto](https://github.com/WiseGhostan)
+- [Raquel Clemente](https://github.com/raquel-muniz)
+
+
+## Modelagem de Banco de Dados
+### [Modelo Conceitual](https://github.com/kesiasilv/Projeto/blob/main/Conceptual%20model%20-%20BRMW.pdf)
+### [Modelo Lógico](https://github.com/kesiasilv/Projeto/blob/main/biblioteca_UNI_EER.mwb)
+### [Modelo Fisico](https://github.com/kesiasilv/Projeto/blob/main/Script_modelo_fisico.sql)
+
 ## Estrutura do Banco de Dados
 
 O banco de dados **Biblioteca** foi projetado com as seguintes tabelas:
