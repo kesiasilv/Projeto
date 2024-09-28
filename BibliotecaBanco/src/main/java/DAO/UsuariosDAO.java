@@ -68,33 +68,6 @@ public class UsuariosDAO {
         }
         return usuarios;
     }
-
-   
-    public boolean atualizar(Usuarios usuario) {
-        String sql = "UPDATE usuarios SET nome = ?, email = ?, data_nascimento = ?, endereco = ? WHERE CPF = ?";
-        try (PreparedStatement ps = conexao.prepareStatement(sql)) {
-            ps.setString(1, usuario.getNome());
-            ps.setString(2, usuario.getEmail());
-            ps.setDate(3, usuario.getData_nascimento());
-            ps.setString(4, usuario.getEndereco());
-            ps.setString(5, usuario.getCpf()); 
-            ps.executeUpdate();
-            return true;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-    public void excluir(String cpf) { 
-        String sql = "DELETE FROM usuarios WHERE CPF = ?";
-        try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
-            stmt.setString(1, cpf);
-            stmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
 }
     
 
