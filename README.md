@@ -207,41 +207,6 @@ O sistema implementa operações CRUD para cada tabela (create, read, update e d
 
 ```
 
-#### Update (Atualizar Usuário)
-
-```java
- // Atualização de dados (UPDATE)
-    public boolean atualizar(Autores autor) {
-        String sql = "UPDATE autores SET nome = ?, nacionalidade = ?, sexo = ? WHERE id_autor = ?";
-        try (PreparedStatement ps = conexao.prepareStatement(sql)) {
-            ps.setString(1, autor.getNome());
-            ps.setString(2, autor.getNacionalidade());
-            ps.setString(3, autor.getSexo());
-            ps.setInt(4, autor.getId_autor());
-            ps.executeUpdate();
-            return true;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-```
-
-#### Delete (Deletar Usuário)
-
-```java
-// Exclusão de dados (DELETE)
-    public void excluir(int id) {
-        String sql = "DELETE FROM autores WHERE id_autor = ?";
-        try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
-            stmt.setInt(1, id);
-            stmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-```
 #### Create (Inserir Categoria)
 
 ```java
@@ -454,40 +419,6 @@ public List<Usuarios> consultar() {
             e.printStackTrace();
         }
         return usuarios;
-    }
-```
-
-#### Update (Atualizar Usuarios)
-
-```java
-public boolean atualizar(Usuarios usuario) {
-        String sql = "UPDATE usuarios SET nome = ?, email = ?, data_nascimento = ?, endereco = ? WHERE CPF = ?";
-        try (PreparedStatement ps = conexao.prepareStatement(sql)) {
-            ps.setString(1, usuario.getNome());
-            ps.setString(2, usuario.getEmail());
-            ps.setDate(3, usuario.getData_nascimento());
-            ps.setString(4, usuario.getEndereco());
-            ps.setString(5, usuario.getCpf()); 
-            ps.executeUpdate();
-            return true;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-```
-
-#### Delete (Deletar Usuarios)
-
-```java
-public void excluir(String cpf) { 
-        String sql = "DELETE FROM usuarios WHERE CPF = ?";
-        try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
-            stmt.setString(1, cpf);
-            stmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 ```
 
