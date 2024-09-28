@@ -1,6 +1,6 @@
 # Biblioteca Universitária com Integração Java JDBC e MySQL
 
-O objetivo deste trabalho é desenvolver um sistema completo que integre a linguagem de programação Java com o banco de dados MySQL. O projeto deverá contemplar a construção dos modelos conceitual, lógico e físico do banco de dados, bem como a implementação de uma aplicação Java que interaja diretamente com o banco para realizar operações de inserção, consulta, atualização e exclusão de dados (CRUD).
+O objetivo deste trabalho foi desenvolver um sistema completo que integre a linguagem de programação Java com o banco de dados MySQL. O projeto comtempla a construção dos modelos conceitual, lógico e físico do banco de dados, bem como a implementação de uma aplicação Java que interaja diretamente com o banco para realizar operações de inserção e consulta de dados (CRUD).
 
 ## Estrutura do Banco de Dados
 
@@ -98,7 +98,7 @@ CREATE TABLE emprestimos (
 
 ## Integração JDBC
 
-A integração com o banco de dados MySQL é feita utilizando a API JDBC. A seguir está um exemplo básico de como configurar a conexão JDBC:
+A integração com o banco de dados MySQL é feita utilizando a API JDBC. A seguir mostra como foi configurar a conexão JDBC:
 
 ### Dependências
 Adicione o driver JDBC MySQL ao seu projeto. Se você estiver usando Maven, adicione a seguinte dependência no seu `pom.xml`:
@@ -159,7 +159,7 @@ public class BibliotecaBanco {
 
 ### Operações CRUD
 
-O sistema implementa operações CRUD para cada tabela (create, read, update e delete) . A seguir esta como foi implementado em todas as tabelas `usuarios`.
+O sistema implementa operações CRUD para cada tabela (create, read) . A seguir esta como foi implementado em todas as tabelas `usuarios`.
 
 #### Create (Inserir Usuário)
 
@@ -424,7 +424,7 @@ public List<Usuarios> consultar() {
 
 /*
  * A classe `BibliotecaBanco` é responsável por estabelecer a conexão com o banco de dados de uma biblioteca
- * e executar as operações CRUD (Criar, Ler, Atualizar, Excluir) para as diferentes entidades do sistema, 
+ * e executar as operações CRUD (Criar, Ler) para as diferentes entidades do sistema, 
  * como `Usuarios`, `Autores`, `Editoras`, `Categorias`, `Livros`, e `Emprestimos`.
  *
  * A main() é o ponto de entrada da aplicação e, dentro dela, as seguintes ações ocorrem:
@@ -469,6 +469,6 @@ public List<Usuarios> consultar() {
 
 Este projeto de Biblioteca Universitária demonstra a integração entre Java e MySQL, utilizando a API JDBC para realizar operações CRUD em um banco de dados relacional. Ao longo do desenvolvimento, foram aplicados conceitos fundamentais de modelagem de banco de dados, com a criação dos modelos conceitual, lógico e físico, além da implementação de uma aplicação Java capaz de manipular os dados das tabelas de maneira eficiente e segura.
 
-A solução atende aos requisitos propostos, permitindo a inserção, consulta, atualização e exclusão de dados de usuários, autores, editoras, categorias, livros e empréstimos, garantindo integridade referencial e consistência no banco de dados. A utilização de boas práticas de programação em Java, junto com o uso de prepared statements para evitar injeção de SQL e a correta gestão de conexões, torna o sistema robusto e confiável.
+A solução atende aos requisitos propostos, permitindo a inserção e consulta de dados de usuários, autores, editoras, categorias, livros e empréstimos, garantindo integridade referencial e consistência no banco de dados. A utilização de boas práticas de programação em Java, junto com o uso de prepared statements para evitar injeção de SQL e a correta gestão de conexões, torna o sistema robusto e confiável.
 
 O projeto também oferece uma base sólida para futuras expansões, como a adição de funcionalidades mais avançadas, relatórios, e melhorias no gerenciamento da biblioteca.
