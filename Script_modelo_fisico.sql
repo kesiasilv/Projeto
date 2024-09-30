@@ -61,6 +61,9 @@ foreign key (CPF) references usuarios(CPF)
 
 -- criando a tabela associativa --
 create table livro_autor(
+ISBN int,
+id_autor int,
+primary key (ISBN, id_autor),
 foreign key ISBN int references livros(ISBN),
 foreign key id_autor int references autores(id_autor)
 );
