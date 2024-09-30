@@ -107,13 +107,13 @@ CREATE TABLE emprestimos (
     FOREIGN KEY (CPF) REFERENCES usuarios(CPF)
 );
 ```
-### 7. **livro_autor
+### 7. **livro_autor**
 Tabela associativa que referencia a tabela livro e a tabela autor n:n 
-```
+```sql
 CREATE TABLE livro_autor(
-FOREIGN KEY ISBN int REFERENCES livros(ISBN),
-FOREIGN KEY id_autor int REFERENCES autores(id_autor)
-)
+  FOREIGN KEY ISBN int REFERENCES livros(ISBN),
+  FOREIGN KEY id_autor int REFERENCES autores(id_autor)
+);
 ```
 ## Configuração do Banco de Dados
 
