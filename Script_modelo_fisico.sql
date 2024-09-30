@@ -50,7 +50,7 @@ foreign key (id_editora) references editora(id_editora)
 
 -- criando a tabela Emprestimo --
 create table emprestimos(
-cod_emprestimo integer primary key not null,
+cod_emprestimo int primary key not null,
 data_emprestimo date not null,
 data_devolucao date not null,
 ISBN int,
@@ -58,3 +58,9 @@ CPF varchar(13),
 foreign key (ISBN) references livros(ISBN),
 foreign key (CPF) references usuarios(CPF)
 );
+
+-- criando a tabela associativa --
+create table livro_autor(
+foreign key ISBN int references livros(ISBN),
+foreign key id_autor int references autores(id_autor)
+)
