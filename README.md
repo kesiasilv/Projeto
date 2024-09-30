@@ -110,9 +110,12 @@ CREATE TABLE emprestimos (
 ### 7. **livro_autor**
 Tabela associativa que referencia a tabela livro e a tabela autor n:n 
 ```sql
-CREATE TABLE livro_autor(
-  FOREIGN KEY ISBN int REFERENCES livros(ISBN),
-  FOREIGN KEY id_autor int REFERENCES autores(id_autor)
+CREATE TABLE livro_autor (
+  ISBN int,
+  id_autor int,
+  PRIMARY KEY (ISBN, id_autor),
+  FOREIGN KEY (ISBN) REFERENCES livros(ISBN),
+  FOREIGN KEY (id_autor) REFERENCES autores(id_autor)
 );
 ```
 ## Configuração do Banco de Dados
