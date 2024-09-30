@@ -63,4 +63,4 @@ foreign key (CPF) references usuarios(CPF)
 create table livro_autor(
 foreign key ISBN int references livros(ISBN),
 foreign key id_autor int references autores(id_autor)
-)
+);
